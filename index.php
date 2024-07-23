@@ -5,10 +5,10 @@
     error_reporting(E_ALL);
 
     // including files
-    include 'php/helpers.php';
-    include 'php/Db.php';
-    include 'php/Router.php';
-    include 'php/Model.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/php/helpers.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/php/Db.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/php/Router.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/php/Model.php';
 
     $ini = parse_ini_file(getcwd() . "/config.ini"); // reading config file
 

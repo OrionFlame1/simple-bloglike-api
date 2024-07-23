@@ -14,11 +14,9 @@
 
         public function __construct($db) {
             $request = $_SERVER['REQUEST_URI'];
-            $request = substr($request, 1);
-            $request = substr($request, strpos($request, '/') + 1);
             $request = parse_url($request);
 
-            $this->request = $request['path'];
+            $this->request = substr($request['path'], 1);
             $this->db = $db;
             $this->params = null;
 
@@ -81,7 +79,8 @@
                     throw new Exception('Route as function does not exists: ' . $route['route']);
                 }
             } else {
-                require __DIR__ . $route['route'];
+				echo $_SERVER['DOCUMENT_ROOT'] . '/' . $route['route'];
+                require $_SERVER['DOCUMENT_ROOT'] . '/' . $route['route'];
             }
             return;
         }

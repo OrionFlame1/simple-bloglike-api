@@ -110,12 +110,14 @@
             if($query->num_rows == 0) {
                 return ['error' => 'Username not found'];
             }
+
+            $enc_pass = hash('sha256', $params['password']);
     
             // check if password is correct
             $query = $db->query(
                 "SELECT id, username FROM users 
                 WHERE username = '{$params['username']}'
-                AND password = '{$params['password']}'"
+                AND password = '{$enc_pass}'"
             );
     
             if($query->num_rows == 0) {
@@ -146,12 +148,14 @@
             if($query->num_rows != 0) {
                 return ['error' => 'Username or Email already registered'];
             }
+
+            $enc_pass = hash('sha256', $params['password']);
     
             $query = $db->query(
                 "INSERT INTO users SET
                 username = \"{$params['username']}\",
                 email = \"{$params['email']}\",
-                password = \"{$params['password']}\""
+                password = \"{$enc_pass}\""
             );
             
             $query = $db->query(
