@@ -41,6 +41,8 @@ To get started, you can clone the repo (recommended) or download as archive. To 
   git clone https://github.com/OrionFlame1/simple-bloglike-api
 ```
 
+After that, you need to fill in your credentials for the database in the ```config.ini``` file.
+
 ### Deployment
 You can deploy this api by using Docker (recommended) or manually.
 
